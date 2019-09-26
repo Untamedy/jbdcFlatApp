@@ -1,0 +1,5 @@
+ConnectionTest\MySqlConnectionTest.class
+storeTests\OrderServiceTest.class
+flatTests\FlatFilterTest.class
+storeTests\ClientServiceTest.class
+storeTests\GoodsServiceTest.class
