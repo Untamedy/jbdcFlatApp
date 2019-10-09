@@ -6,7 +6,6 @@
 package ConnectionTest;
 
 import homework.commonInit.ConnectionService;
-import homework.commonInit.InputData;
 import homework.commonInit.PropertyReader;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -24,8 +23,8 @@ import org.junit.Test;
 public class MySqlConnectionTest {    
     
     private static ConnectionService conectionService;
-    //private static String path = "src\\main\\resources\\prop.properties";
-    private static String path = "src\\main\\resources\\propmysql.properties";
+    private static String path = "src\\main\\resources\\prop.properties";
+    //private static String path = "src\\main\\resources\\propmysql.properties";
     private static Connection connection;
     
     @BeforeClass

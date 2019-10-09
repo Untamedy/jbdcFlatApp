@@ -27,8 +27,7 @@ import org.junit.Test;
 public class FlatFilterTest extends Assert {
 
     private static ConnectionService connectionService;
-    private static FilterService service;
-    //private static String path = "src\\main\\resources\\prop.properties";
+    private static FilterService service;   
     private static String path = "src\\main\\resources\\prop.properties";
 
     @BeforeClass
@@ -46,7 +45,7 @@ public class FlatFilterTest extends Assert {
 
     @Test
     public void selectByRoomCount() {
-        List<Flat> flats = service.selectBy(FilterService.Parameters.room, 1, 3);
+        List<Flat> flats = service.selectBy("room", 1, 3);
         for(Flat f: flats){
               assertTrue(f.getRooms() < 3 && f.getRooms() > 1);
         }      
@@ -54,7 +53,7 @@ public class FlatFilterTest extends Assert {
 
     @Test
     public void selectBySquare() {
-        List<Flat> flats = service.selectBy(FilterService.Parameters.square, 20, 40);
+        List<Flat> flats = service.selectBy("square", 20, 40);
         for(Flat f: flats){
             assertTrue(f.getSqueare() < 40 && f.getSqueare() > 20);
         }
@@ -62,7 +61,7 @@ public class FlatFilterTest extends Assert {
 
     @Test
     public void selectByPrice() {
-        List<Flat> flats = service.selectBy(FilterService.Parameters.price, 10000, 30000);
+        List<Flat> flats = service.selectBy("price", 10000, 30000);
         for(Flat f: flats){
             assertTrue(f.getPrice() < 30000 && f.getPrice() > 10000);
         }

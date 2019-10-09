@@ -1,7 +1,6 @@
 package homework.flats.services;
 
 import homework.commonInit.ConnectionService;
-import homework.commonInit.InputData;
 import homework.flats.entities.Address;
 import homework.flats.entities.Flat;
 import java.sql.Connection;
@@ -10,7 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -31,7 +29,7 @@ public class FilterService {
         this.connection = connectionService.getConnection();
     }
 
-    public List<Flat> selectBy(Parameters parameter, int min, int max) {
+    public List<Flat> selectBy(String parameter, int min, int max) {
         
         List<Flat> flats = new ArrayList<>();
         try {
@@ -49,7 +47,7 @@ public class FilterService {
         List<Flat> flats = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet results = statement.executeQuery("select * from mydb.flats where region=" + region);
+            ResultSet results = statement.executeQuery("select * from mydb.flats where region='" + region+"'");// reigion in quats
             flats = createFlats(results);
         } catch (SQLException ex) {
            LOGGER.warning(ex.getMessage());
@@ -61,7 +59,7 @@ public class FilterService {
         List<Flat> flats = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from mydb.address where street=" + street + "and build=" + build);
+            ResultSet resultSet = statement.executeQuery("select * from mydb.address where street='" + street + "'" + "and build=" + build);
             ResultSet resultSets = statement.executeQuery("select * from mydb.flat where addressId=" + resultSet.getInt("id"));
             flats = createFlats(resultSets);
         } catch (SQLException ex) {
