@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -30,10 +31,13 @@ public class ConnectionService {
         Properties property = propReader.getProperties();
         Connection connection = null;
         try {
-            Class.forName("org.postgresql.Driver");
+           // Class.forName("org.postgresql.Driver");
+           Class.forName("com.mysql.jdbc.Driver"); 
             connection = DriverManager.getConnection(property.getProperty("url"), property.getProperty("login"), property.getProperty("password"));
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex) {
             LOGGER.severe(ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ConnectionService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return connection;
 

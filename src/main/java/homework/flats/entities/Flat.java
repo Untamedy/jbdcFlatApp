@@ -16,13 +16,13 @@ public class Flat {
     private Address address;
     private int rooms;    
     private int squeare;
-    private double price;
+    private int price;
     
     public Flat(){
         
     }
 
-    public Flat(int id, String region, Address address, int rooms, int squeare, double price) {
+    public Flat(int id, String region, Address address, int rooms, int squeare, int price) {
         this.id = id;
         this.region = region;
         this.address = address;                
@@ -68,7 +68,7 @@ public class Flat {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

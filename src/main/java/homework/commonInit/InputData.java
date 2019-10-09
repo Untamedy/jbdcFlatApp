@@ -19,16 +19,16 @@ public class InputData {
     private ConnectionService connectionService;
     private Connection connection; 
     
-    private String createFlatPostgreSQL = "src\\main\\resources\\createTable.txt";
-    private String createStorePostgreSQL = "src\\main\\resources\\createTableStore.txt";
-    private String insertDataFlat = "src\\main\\resources\\insertData.txt";
-    private String insertDataStore = "src\\main\\resources\\insertStoreData.txt";
+   // private String createFlatPostgreSQL = "src\\main\\resources\\createTable.txt";
+   // private String createStorePostgreSQL = "src\\main\\resources\\createTableStore.txt";
+   // private String insertDataFlat = "src\\main\\resources\\insertData.txt";
+   // private String insertDataStore = "src\\main\\resources\\insertStoreData.txt";
     
     
-    //private String createFlatMySQL = "src\\main\\resources\\mysql\\createTable.txt";
-    //private String createStoreMySQL= "src\\main\\resources\\mysql\\createTableStore.txt";
-    //private String insertDataFlat = "src\\main\\resources\\mysql\\inputDataFlat.txt";
-    //private String insertDataStore = "src\\main\\resources\\mysql\\inputDataStore.txt";
+    private String createFlatMySQL = "C:\\Users\\Lenovo\\Documents\\NetBeansProjects\\jdbcFlatApp\\src\\main\\resources\\mysql\\createTable.txt";
+    private String createStoreMySQL= "C:\\Users\\Lenovo\\Documents\\NetBeansProjects\\jdbcFlatApp\\src\\main\\resources\\mysql\\createTableStore.txt";
+    private String insertDataFlat = "C:\\Users\\Lenovo\\Documents\\NetBeansProjects\\jdbcFlatApp\\src\\main\\resources\\mysql\\inputDataFlat.txt";
+    private String insertDataStore = "C:\\Users\\Lenovo\\Documents\\NetBeansProjects\\jdbcFlatApp\\src\\main\\resources\\mysql\\inputDataStore.txt";
     
 
     public InputData() {
@@ -40,7 +40,7 @@ public class InputData {
     }
 
     public void populateDB() throws SQLException {
-        executeSQL(createFlatPostgreSQL);
+        executeSQL(createFlatMySQL);
         //executeSQL(createStorePostgreSQL);
         Statement statemen = connection.createStatement();
         ResultSet result = statemen.executeQuery("select * from mydb.orders where code = 'order_test'");

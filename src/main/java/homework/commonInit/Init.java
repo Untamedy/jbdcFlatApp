@@ -16,8 +16,8 @@ public class Init {
     private  PropertyReader propertyReader;
     private  InputData inputData;
     private  FilterService filterService;
-   private  String path = "C:\\Users\\YBolshakova\\Documents\\gs-maven\\jdbcWebApp\\src\\main\\resources\\prop.properties";
-
+   //private  String path = "src\\main\\resources\\prop.properties";
+    private String path = "C:\\Users\\Lenovo\\Documents\\NetBeansProjects\\jdbcFlatApp\\src\\main\\resources\\propmysql.properties";
     public Init() {        
 
     }

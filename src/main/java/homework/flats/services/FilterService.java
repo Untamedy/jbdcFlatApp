@@ -59,8 +59,10 @@ public class FilterService {
         List<Flat> flats = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from mydb.address where street='" + street + "'" + "and build=" + build);
-            ResultSet resultSets = statement.executeQuery("select * from mydb.flat where addressId=" + resultSet.getInt("id"));
+            ResultSet resultSet = statement.executeQuery("select * from mydb.address where street='" + street + "'" + "and buildNum=" + build);
+            resultSet.next();
+            int id = resultSet.getInt("id");
+            ResultSet resultSets = statement.executeQuery("select * from mydb.flats where addressId=" + id);
             flats = createFlats(resultSets);
         } catch (SQLException ex) {
           LOGGER.warning(ex.getMessage());
@@ -78,12 +80,12 @@ public class FilterService {
     }
 
     public Flat createNewFlat(ResultSet resultSet) throws SQLException {
-        Flat flat = new Flat();
+        Flat flat = new Flat();        
         flat.setId(resultSet.getInt("id"));
         flat.setRegion(resultSet.getString("region"));
         flat.setRooms(resultSet.getInt("room"));
         flat.setSqueare(resultSet.getInt("square"));
-        flat.setPrice(resultSet.getDouble("price"));
+        flat.setPrice(resultSet.getInt("price"));
         flat.setAddress(getAddress(resultSet.getInt("addressId")));
 
         return flat;

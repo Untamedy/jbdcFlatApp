@@ -27,8 +27,9 @@ import org.junit.Test;
 public class FlatFilterTest extends Assert {
 
     private static ConnectionService connectionService;
-    private static FilterService service;   
-    private static String path = "src\\main\\resources\\prop.properties";
+    private static FilterService service;
+    //private static String path = "src\\main\\resources\\prop.properties";
+    private static String path = "src\\main\\resources\\propmysql.properties";
 
     @BeforeClass
     public static void getConnection() {
@@ -46,15 +47,15 @@ public class FlatFilterTest extends Assert {
     @Test
     public void selectByRoomCount() {
         List<Flat> flats = service.selectBy("room", 1, 3);
-        for(Flat f: flats){
-              assertTrue(f.getRooms() < 3 && f.getRooms() > 1);
-        }      
+        for (Flat f : flats) {
+            assertTrue(f.getRooms() < 3 && f.getRooms() > 1);
+        }
     }
 
     @Test
     public void selectBySquare() {
         List<Flat> flats = service.selectBy("square", 20, 40);
-        for(Flat f: flats){
+        for (Flat f : flats) {
             assertTrue(f.getSqueare() < 40 && f.getSqueare() > 20);
         }
     }
@@ -62,7 +63,7 @@ public class FlatFilterTest extends Assert {
     @Test
     public void selectByPrice() {
         List<Flat> flats = service.selectBy("price", 10000, 30000);
-        for(Flat f: flats){
+        for (Flat f : flats) {
             assertTrue(f.getPrice() < 30000 && f.getPrice() > 10000);
         }
     }
@@ -70,7 +71,7 @@ public class FlatFilterTest extends Assert {
     @Test
     public void selectByAddress() {
         List<Flat> flats = service.selectByAddress("First", 5);
-         for(Flat f: flats){
+        for (Flat f : flats) {
             assertNotNull(f);
             assertTrue(f.getAddress().toString().equals("First_5"));
         }
@@ -79,7 +80,7 @@ public class FlatFilterTest extends Assert {
     @Test
     public void selectByregion() {
         List<Flat> flats = service.selectByRegion("west");
-        for(Flat f: flats){ 
+        for (Flat f : flats) {
             assertNotNull(f);
             assertTrue(f.getRegion().equals("west"));
         }
