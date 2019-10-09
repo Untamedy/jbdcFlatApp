@@ -11,10 +11,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Search flat by:</title>
     </head>
-    <form action="selectByParam"method="Post"  >
+    <form action="selectByParam" method="Post"  >
         <body>
             <label>By parameter:
-                <select>
+                <select name="param">
                     <option>price</option>
                     <option>square</option>
                     <option>room</option>

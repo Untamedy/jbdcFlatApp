@@ -41,7 +41,7 @@ public class ByParameters extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        String param = request.getParameter("parameter");
+        String param = request.getParameter("param");
         int min = Integer.valueOf(request.getParameter("min"));
         int max = Integer.valueOf(request.getParameter("max"));       
         List<Flat> flats = service.selectBy(param, min, max);
