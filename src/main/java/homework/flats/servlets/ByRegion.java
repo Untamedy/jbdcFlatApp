@@ -24,8 +24,8 @@ public class ByRegion extends HttpServlet {
     private Init init;
     
     public ByRegion(){
-        this.init = new Init();
-        this.service = init.getConnection();
+       this.init = Init.getInit();
+        this.service = init.getService();
     }
 
     

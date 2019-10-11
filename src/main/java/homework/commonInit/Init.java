@@ -5,36 +5,40 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
  *
  * @author YBolshakova
  */
 public class Init {
 
-    private  ConnectionService connectionService;
-    private  PropertyReader propertyReader;
-    private  InputData inputData;
-    private  FilterService filterService;
-   //private  String path = "src\\main\\resources\\prop.properties";
+    private static ConnectionService connectionService;
+    private PropertyReader propertyReader;
+    private InputData inputData;
+    private static FilterService filterService;
+    //private  String path = "src\\main\\resources\\prop.properties";
     private String path = "C:\\Users\\Lenovo\\Documents\\NetBeansProjects\\jdbcFlatApp\\src\\main\\resources\\propmysql.properties";
-    public Init() {        
 
-    }
+    private static final Init init = new Init();
 
-     public FilterService getConnection() {
+    private Init() {
         PropertyReader reader = new PropertyReader(path);
         connectionService = new ConnectionService(reader);
-        filterService = new FilterService(connectionService);   
         inputData = new InputData(connectionService);
         try {
             inputData.populateDB();
         } catch (SQLException ex) {
             Logger.getLogger(Init.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return filterService;
     }
     
-    
+   public static Init getInit(){
+        return init;
+             
+    }
+
+    public static FilterService getService() {
+        filterService = new FilterService(connectionService);
+        return filterService;
+    }
 
 }

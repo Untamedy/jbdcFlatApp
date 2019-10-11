@@ -25,8 +25,8 @@ public class ByParameters extends HttpServlet {
     private Init init;
     
     public ByParameters(){
-        this.init = new Init();
-        this.service = init.getConnection();
+        this.init = Init.getInit();
+        this.service = init.getService();
     }
     
     @Override

@@ -24,8 +24,8 @@ public class ByAddress extends HttpServlet {
     private Init init;
     
     public ByAddress(){
-        this.init = new Init();
-        this.service = init.getConnection();
+        this.init = Init.getInit();
+        this.service = init.getService();
     }
      
       @Override
